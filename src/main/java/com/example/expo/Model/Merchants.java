@@ -92,9 +92,17 @@ public class Merchants {
 
 
 
+
+    /////////////////Relation
+
 //لكل تاجر واحد اكثر من فاتورة
     @JsonIgnore
     @OneToMany(mappedBy = "merchant")
     private List<Invoices> invoices;
+
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "merchant")
+    private Merchant_Wallets merchant_wallet;
 
 }
