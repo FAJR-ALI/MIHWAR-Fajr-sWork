@@ -57,7 +57,7 @@ public class UserWallets {
 
 
 
-     @OneToMany(mappedBy = "userWallets")
+     @OneToMany(cascade = CascadeType.ALL,mappedBy = "userWallets")
      private Set<UserWalletTransaction> userWalletTransaction;
 
 }

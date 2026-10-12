@@ -55,15 +55,15 @@ public class User {
 
 
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<UserDocument> documents;
 
 //   private  invoicesId;
 
-     @OneToOne(mappedBy = "user")
+     @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
      private UserWallets wallet;
 
-     @OneToOne(mappedBy = "user")
+     @OneToOne(cascade = CascadeType.ALL ,mappedBy = "user")
      private UserHealthCard userHealthCard;
 
 

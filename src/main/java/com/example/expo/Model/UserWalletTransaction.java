@@ -1,5 +1,6 @@
 package com.example.expo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 @Entity
 
 @Check(constraints = "amount > 0")
-@Check(constraints = "transaction_type IN ('TOP_UP', 'PAYMENT', 'REFUND')")
+@Check(constraints = "transaction_type IN ('TOP_UP', 'PAYMENT', 'REFUND', 'SELLER_CREDIT')")
 @Check(constraints = "status IN ('PENDING', 'SUCCESS', 'FAILED')")
 
 public class UserWalletTransaction {
@@ -28,10 +29,12 @@ public class UserWalletTransaction {
 
 
 
-    @Pattern(regexp = "^(TOP_UP|PAYMENT|REFUND)$")
+    @Pattern(
+            regexp = "^(TOP_UP|PAYMENT|REFUND|SELLER_CREDIT)$",
+            message = "Invalid transaction type"
+    )
     @Column(nullable = false)
-    private  String transactionType;
-
+    private String transactionType;
 
     @Positive(message = "Amount must be greater than zero")
     @Column(nullable = false, precision = 12, scale = 2)
@@ -56,6 +59,7 @@ public class UserWalletTransaction {
 
 
     @ManyToOne
-    @JoinColumn(name = "wallet_id",nullable = false)
+    @JoinColumn
+    @JsonIgnore
     private UserWallets userWallets;
 }
