@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Merchant_Wallets {
+public class MerchantWallets {
 
 
     @Id

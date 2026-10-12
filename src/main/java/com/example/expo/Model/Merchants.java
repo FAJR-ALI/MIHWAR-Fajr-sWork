@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
-import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
@@ -103,6 +102,6 @@ public class Merchants {
 
     @JsonIgnore
     @OneToOne(mappedBy = "merchant")
-    private Merchant_Wallets merchant_wallet;
+    private MerchantWallets merchantWallets;
 
 }
