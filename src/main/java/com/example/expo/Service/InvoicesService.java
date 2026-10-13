@@ -32,15 +32,15 @@ public class InvoicesService {
             throw new ApiException("merchant id not found");
         }
 
+
         Invoices invoice = new Invoices();
 
         invoice.setMerchant(merchant);//الفاتورة مرتبط بالتاجر
         invoice.setInvoice_number(request.getInvoice_number());
-        invoice.setUser_id(request.getUser_id());
+//        invoice.setUser_id(request.getUser_id());
         invoice.setDescription(request.getDescription());
         invoice.setSubtotal(request.getSubtotal());
         invoice.setTax_amount(request.getTax_amount());
-
         // الإجمالي يحسبه النظام.
         invoice.setTotal_amount(
                 request.getSubtotal().add(request.getTax_amount())
@@ -54,7 +54,7 @@ public class InvoicesService {
 
         LocalDateTime now = LocalDateTime.now();
         invoice.setCreated_at(now);
-        invoice.setUpdated_at(now);
+//        invoice.setUpdated_at(now);
 
         invoicesRepository.save(invoice);
     }
@@ -125,7 +125,7 @@ public class InvoicesService {
 
         oldInvoice.setQr_token(request.getQr_token());
         oldInvoice.setExpires_at(request.getExpires_at());
-        oldInvoice.setUpdated_at(LocalDateTime.now());
+//        oldInvoice.setUpdated_at(LocalDateTime.now());
 
         // نحافظ على merchant وuser_id وcreated_at وstatus وpaid_at.
         invoicesRepository.save(oldInvoice);

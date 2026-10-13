@@ -58,7 +58,8 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<UserDocument> documents;
 
-//   private  invoicesId;
+    @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "user")
+    private Set<Invoices> invoices;
 
      @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
      private UserWallets wallet;

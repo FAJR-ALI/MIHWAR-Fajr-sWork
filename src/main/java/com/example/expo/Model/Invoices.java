@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.math.BigDecimal;
 
 import java.time.LocalDateTime;
@@ -29,12 +32,12 @@ public class Invoices {
     //عندي علاقة مع الميرشنت من خلالها ممكن اجيب الميرشنت اي دي
 //    @NotNull(message = "Merchant ID is required")
 //    @Positive(message = "Merchant ID must be positive")
-    @Column(name = "merchant_id", insertable = false, updatable = false)
-    private Integer merchant_id;
-
-    @Positive(message = "User ID must be positive")
-    @Column(columnDefinition = "int ")
-    private Integer user_id;
+//    @Column(name = "merchant_id", insertable = false, updatable = false)
+//    private Integer merchant_id;
+//
+//    @Positive(message = "User ID must be positive")
+//    @Column(columnDefinition = "int ")
+//    private Integer user_id;
 
     @NotBlank(message = "Description is required")
     @Size(max = 255, message = "Description must not exceed 255 characters")
@@ -81,21 +84,25 @@ public class Invoices {
     private LocalDateTime paid_at;
 
 
-    @NotNull(message = "Created date is required")
-    @PastOrPresent(message = "Created date cannot be in the future")
-    @Column(columnDefinition = "DATETIME", nullable = false, updatable = false)
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
     private LocalDateTime created_at;
 
-    @NotNull(message = "Updated date is required")
-    @PastOrPresent(message = "Updated date cannot be in the future")
-    @Column(columnDefinition = "DATETIME", nullable = false)
-    private LocalDateTime updated_at;
-
+//    @UpdateTimestamp
+//    @Column(nullable = false)
+//    private LocalDateTime updated_at;
 
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "merchant_id", nullable = false)//حتى لو ماكتبت اسم الميرشنت _اي دي هيكون مكتوب باي ديفولت
     private Merchants merchant;
+
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = true)
+    @JsonIgnore
+    private User user;
+
 
 
 }
