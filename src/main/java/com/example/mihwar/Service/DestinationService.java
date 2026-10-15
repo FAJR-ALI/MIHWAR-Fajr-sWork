@@ -38,8 +38,6 @@ public class DestinationService {
         oldDestination.setName(destination.getName());
         oldDestination.setType(destination.getType());
         oldDestination.setDescription(destination.getDescription());
-        oldDestination.setLatitude(destination.getLatitude());
-        oldDestination.setLongitude(destination.getLongitude());
         oldDestination.setStatus(destination.getStatus());
 
         return destinationRepository.save(oldDestination);

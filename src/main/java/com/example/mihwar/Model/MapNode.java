@@ -25,9 +25,9 @@ public class MapNode {
     @Column(nullable = false, length = 100)
     private String name;
 
-    private Double latitude;
+    private Double x;
 
-    private Double longitude;
+    private Double y;
 
 
     @Enumerated(EnumType.STRING)

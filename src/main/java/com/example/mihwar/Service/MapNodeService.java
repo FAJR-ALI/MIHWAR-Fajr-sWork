@@ -38,8 +38,8 @@ public class MapNodeService {
 
         oldMapNode.setDestination(mapNode.getDestination());
         oldMapNode.setName(mapNode.getName());
-        oldMapNode.setLatitude(mapNode.getLatitude());
-        oldMapNode.setLongitude(mapNode.getLongitude());
+        oldMapNode.setX(mapNode.getX());
+        oldMapNode.setY(mapNode.getY());
         oldMapNode.setNodeType(mapNode.getNodeType());
 
         return mapNodeRepository.save(oldMapNode);

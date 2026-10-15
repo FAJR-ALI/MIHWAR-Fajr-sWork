@@ -29,10 +29,6 @@ public class Destination {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    private Double latitude;
-
-    private Double longitude;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private DestinationStatus status;

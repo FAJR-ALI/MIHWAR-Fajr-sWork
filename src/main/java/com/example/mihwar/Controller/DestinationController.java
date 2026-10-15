@@ -53,8 +53,7 @@ public class DestinationController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteDestination(@PathVariable Long id) {
         destinationService.deleteDestination(id);
-        return ResponseEntity.status(200)
-                .body("Destination deleted successfully");
+        return ResponseEntity.status(200).body("Destination deleted successfully");
     }
 
 }
